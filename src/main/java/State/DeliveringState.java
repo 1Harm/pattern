@@ -1,7 +1,7 @@
 package State;
 
-public class PlayingState extends State {
-    PlayingState(Delivery player) {
+public class DeliveringState extends State {
+    DeliveringState(Delivery player) {
         super(player);
     }
 

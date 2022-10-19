@@ -14,7 +14,7 @@ public class ReadyState extends State {
     @Override
     public String currentDelivery() {
         String action = delivery.startPlayback();
-        delivery.changeState(new PlayingState(delivery));
+        delivery.changeState(new DeliveringState(delivery));
         return action;
     }
 
