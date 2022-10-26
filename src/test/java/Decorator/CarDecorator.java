@@ -1,7 +1,6 @@
 package Decorator;
 
 import Entities.Car;
-import Interfaces.ICar;
 
 //public class CarDecorator implements ICar {
 public abstract class CarDecorator extends Car {

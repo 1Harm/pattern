@@ -1,6 +1,5 @@
 package Entities.Cars;
 
-import Decorator.CarDecorator;
 import Entities.Car;
 
 public class BasicCar extends Car {

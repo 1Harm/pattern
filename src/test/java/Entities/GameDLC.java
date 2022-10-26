@@ -1,7 +1,6 @@
 package Entities;
 
 import Decorator.GameDecorator;
-import Interfaces.IGame;
 
 public class GameDLC extends GameDecorator {
 

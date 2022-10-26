@@ -42,7 +42,7 @@ public class Delivery {
         if (CurrentLocation > deliveryList.size() - 1) {
             CurrentLocation = 0;
         }
-        return "Your delivery sending " + deliveryList.get(CurrentLocation);
+        return "Your have added new order with id " + deliveryList.get(CurrentLocation);
     }
 
     public String previousLocation() {
@@ -50,7 +50,7 @@ public class Delivery {
         if (CurrentLocation < 0) {
             CurrentLocation = deliveryList.size() - 1;
         }
-        return "Your delivery sending " + deliveryList.get(CurrentLocation);
+        return "Previous order was with id " + deliveryList.get(CurrentLocation);
     }
 
     public void setCurrentLocation() {

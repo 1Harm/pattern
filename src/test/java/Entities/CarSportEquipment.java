@@ -1,7 +1,6 @@
 package Entities;
 
 import Decorator.CarDecorator;
-import Interfaces.ICar;
 
 public class CarSportEquipment extends CarDecorator {
 

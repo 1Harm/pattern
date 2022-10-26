@@ -1,10 +1,4 @@
 import Entities.*;
-import Entities.Books.PsychologicalBook;
-import Entities.Books.RomanceBook;
-import Entities.Books.SciFiBook;
-import Entities.Books.SubBookDecorator.AdditionalEditionBook;
-import Entities.Books.SubBookDecorator.LimitedCollectionBook;
-import Entities.Books.SubBookDecorator.SignatureBook;
 import Entities.Cars.BasicCar;
 import Entities.Cars.CarsFeatures.CarMotor;
 import Entities.Cars.CarsFeatures.EngineCapacity;
@@ -14,16 +8,47 @@ import Factory.CollectionFactory;
 import Observer.Interfaces.IObserver;
 import Observer.MyCollectionSubsciber;
 import Entities.CollectionTypes;
-import Factory.CollectionFactory;
 import State.Delivery;
 import State.UI;
+import Template.Google;
+import Template.Log;
+import Template.Twitter;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Program {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        Connection conn = null;
+
+        try {
+            String dbURL = "jdbc:postgresql://localhost:5432/pattern";
+            String user = "postgres";
+            String pass = "123";
+
+            conn = DriverManager.getConnection(dbURL, user, pass);
+            if (conn != null) {
+                System.out.println("Connected to database");
+
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                if (conn != null && !conn.isClosed()) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
 
         Scanner input = new Scanner(System.in);
         int menu = -1;
@@ -41,6 +66,7 @@ public class Program {
             System.out.println("4) Add item to collection");
             System.out.println("5) Show Collection");
             System.out.println("6) State Collection");
+            System.out.println("7) Login and Post Collection");
             System.out.println("0) Exit");
             menu = input.nextInt();
 
@@ -759,6 +785,39 @@ public class Program {
                     UI ui = new UI(delivery);
                     ui.init();
                     break;
+                case 7:
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+                    Log log = null;
+                    System.out.print("Input user name: ");
+                    String User = reader.readLine();
+                    System.out.print("Input password: ");
+                    String password = reader.readLine();
+                    System.out.print("Which collection to post: ");
+                    String message = reader.readLine();
+                    while (true) {
+                                            System.out.println("Log in using: ");
+                                            System.out.println("1) Google");
+                                            System.out.println("2) Twitter");
+                                             System.out.println("3) Exit");
+                                            System.out.print("Your choice: ");
+//
+                        int choice = Integer.parseInt(reader.readLine());
+                        if (choice == 1) {
+                            log = new Google(User, password);
+                        } else if (choice == 2) {
+                            log = new Twitter(User, password);
+                        }
+                        else if(choice==3){
+                            System.out.println("Bye");
+                            break;
+                        }
+                        log.post(message);
+                    }
+//
+//
+
+
+
                 case 0:
                     System.out.println("Bye");
                     break;

@@ -7,11 +7,6 @@ import Entities.Books.SciFiBook;
 import Entities.Books.SubBookDecorator.AdditionalEditionBook;
 import Entities.Books.SubBookDecorator.LimitedCollectionBook;
 import Entities.Books.SubBookDecorator.SignatureBook;
-import Entities.Cars.BasicCar;
-import Entities.Cars.CarsFeatures.CarMotor;
-import Entities.Cars.CarsFeatures.EngineCapacity;
-import Entities.Cars.LuxuryCar;
-import Entities.Cars.SportCar;
 
 import java.util.Scanner;
 

@@ -15,7 +15,7 @@ public class DeliveringState extends State {
     @Override
     public String currentDelivery() {
         delivery.changeState(new ReadyState(delivery));
-        return "Paused...";
+        return "Delivery frozen...";
     }
 
     @Override

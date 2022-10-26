@@ -1,7 +1,6 @@
 package Decorator;
 
 import Entities.Game;
-import Interfaces.IGame;
 
 public abstract class GameDecorator extends Game {
 
